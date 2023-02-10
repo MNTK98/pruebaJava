@@ -1,5 +1,6 @@
 package rsg.com.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,19 @@ public class ConsignatarioController {
 	
 	@GetMapping("/")
 	public String inicio (Model model) {
-		List <Consignatario> consignatario = consignatarioService.listarConsignatario();
-		model.addAttribute("Consignatario",consignatario);
+		Long consignatarionombre = null;
+		Date consignatarioactivo = null;
+		Long consignatarioid = null;
+		Boolean consignatariofechacreacion = null;
+		String consignatariofechamodificacion = null;
+		Date clienteid = null;
+		List <Cliente> cliente = clienteService.listarClientes();
+		model.addAttribute("cliente",cliente);
+		List <Consignatario> consignatario = consignatarioService.listOrder(consignatarioid,
+				consignatarionombre, consignatariofechamodificacion, consignatariofechacreacion, consignatarioactivo, clienteid);
+		model.addAttribute("consignatario",consignatario);
 		return "consignatario/show";
 	}
+	
+	
 }

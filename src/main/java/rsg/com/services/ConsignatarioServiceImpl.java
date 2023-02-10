@@ -1,5 +1,6 @@
 package rsg.com.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,12 @@ public class ConsignatarioServiceImpl implements ConsignatarioService {
 	@Override
 	public Consignatario encontrarConsignatario(Consignatario consignatario) {
 		return consignatarioDao.findById(consignatario.getConsignatarioid()).orElse(null);
+	}
+
+	@Override
+	public List<Consignatario> listOrder(Long consignatarioid, Long clienteid, String consignatarionombre,
+			Boolean consignatarioactivo, Date consignatariofechacreacion, Date consignatariofechamodificacion) {
+		return consignatarioDao.listOrder();
 	}
 
 }
