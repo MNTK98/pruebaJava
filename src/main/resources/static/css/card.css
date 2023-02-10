@@ -1,0 +1,74 @@
+.front,
+.back,
+.container1 {
+    width: 18rem;
+    height: 24rem;
+    border-radius: 8px;
+}
+
+.front,
+.back {
+    backface-visibility: hidden;
+    position: absolute;
+}
+
+.front {
+    z-index: 2;
+    transition: all 0.3s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back {
+    transition: all 0.3s linear;
+    transform: rotateY(180deg);
+}
+
+.container1 {
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.container1:hover .front {
+    transform: rotateY(180deg);
+}
+
+.container1:hover .back {
+    transform: rotateY(360deg);
+}
+
+  /* Estilos para las credenciales */
+  .credencial {
+    width: 300px;
+    height: 200px;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    float: left;
+  }
+  /* Estilos para la imagen */
+  .credencial img {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 10px;
+  }
+  /* Estilos para el texto */
+  .credencial p {
+    font-size: 14px;
+  }
+  /* Media Queries para adaptar a diferentes tamaños de pantalla */
+  @media (max-width: 600px) {
+    .credencial {
+      width: 100%;
+      float: none;
+      margin: 0;
+    }
+    .credencial img {
+      width: 50%;
+      float: left;
+      margin-right: 10px;
+    }
+  }

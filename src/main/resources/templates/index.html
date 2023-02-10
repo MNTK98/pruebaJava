@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Prueba Java</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation"></nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center blue-text">Clientes y Consignatarios</h1>
+      
+     
+      <br><br>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s6">
+          <div class="icon-block">
+           <a href="/cliente/"> <h2 class="center light-blue-text">
+           <i class="material-icons">person</i></h2></a>
+           <a href="/cliente/"> <h5 class="center">Ver Clientes</h5></a>
+          </div>
+        </div>
+
+
+
+        <div class="col s6">
+          <div class="icon-block">
+           <a href="/consignatario/"> <h2 class="center light-blue-text">
+           <i class="material-icons">supervisor_account</i></h2></a>
+            <a href="/consignatario/"><h5 class="center"> Ver Consignatarios</h5></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+  </div>
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+  <div th:fragment="footer" id="footer" class="footer">
+  <footer class="page-footer blue" style="position:fixed;bottom:0;left:0;width:100%;" >
+    <div class="container">
+      <div class="row">
+        <div class="col l12 s12">
+          <h6 class="white-text" style="text-align: center;">Prueba Java</h6>      
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+    </div>
+  </footer>
+</div>
+</html>

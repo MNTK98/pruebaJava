@@ -1,0 +1,73 @@
+/* Filtro para el select2 del filtro de obras y tablero de  */
+/* 	contratacion */
+.select2-container .select2-selection--single{
+	height: 33px;
+	display: block;
+	padding: 0.375rem 0.65rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.6;
+	color: #212529;
+	background-clip: padding-box;
+	border: 1px solid #CED4DA;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border-radius: 0.25rem;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+	
+.center {
+  text-align: right;
+}
+
+.select2-container {
+	max-width: 460px;
+	min-width: 100px;
+	}
+/* Filtro para los links de las tablas de tablero de contratacion y obras */
+.sort a:link{
+	color: rgb(0, 0, 0);
+}
+.sort  a:visited{
+	color: rgb(0, 0, 0);
+}
+
+.sort a:hover{
+	text-decoration:underline;
+	color: rgb(133, 133, 133);
+}
+.sort a:sctive{
+	color: rgb(0, 0, 0);
+}    
+   
+.sort-imagen{
+	float: right; /* para que se posicione al final*/
+	padding-top: 6px; /* para que se centre verticalmente */
+}
+
+.sort-descending{
+	background-image: url(../imagen/descending.png);
+	background-repeat: no-repeat;
+}
+
+/* Filtro para el scrooll de las tablas obras y tablero */
+@media (max-width: 1080px){
+#obras{
+	width:  100%;
+    max-height: 4000px;
+    /* display: block; */
+    /* overflow: auto; */
+    /* overflow-x: auto; */
+    overflow-y: auto;
+    display: block;
+	} 
+}
+
+/* Para el responsive de la paginacion */
+.pagination{
+	padding-left: 15px;
+}
+    
+    
+    
