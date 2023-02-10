@@ -46,28 +46,14 @@ public class ClienteController {
 		return "cliente/show";
 	}
 	
-//	@RequestMapping(value = "/cliente/create", method = RequestMethod.POST)
-//	@ResponseBody
-//	public String create(@RequestParam("clientenombre")String clientenombre, Errors errores) {
-//		if(errores.hasErrors()) {
-//			return "cliente"+"?error";
-//		}
-//		Cliente cliente=new Cliente();
-//		cliente.setClientenombre(clientenombre);
-//		cliente.setClienteactivo(true);
-//		cliente.setClientefechacreacion(new Date());
-//		cliente.setClientefechamodificacion(new Date());
-//		clienteService.guardar(cliente);
-//		return "redirect:/cliente"+"?success";
-//	}
-	
+
 	
 	 @PostMapping("/create")
 	    public String createCliente( @RequestParam("clientenombre")String clientenombre, Cliente cliente, Errors errores, Model model ){
 		 if(errores.hasErrors()){
 	            return "cliente";
 	        }
-		 cliente.setClientenombre(clientenombre);
+		 
 		 cliente.setClienteactivo(true);
 		 clienteService.guardar(cliente);
 	    	return "redirect:/cliente/";

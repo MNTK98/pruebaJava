@@ -64,13 +64,68 @@
 			</div>
 
     </div>
-    <br><br>
-  </div>
+    <br>
+  <div>
+
+<h3>Registrar nuevo consignatario</h3>
+			<div>
+			<form id="formCliente" th:action="@{/consignatario/create}" th:object="${consignatario}" method="post">  
+			<div class="col-md-5">
+				<br><label for="consignatarionombre"> <span>Nombre del Consignatario</span> <span
+					class="text-danger text-lg font-weight-bold">*</span>
+				</label>
+			</div>
+			
+			
+			<div class="col-md-5">
+				<input type="text" class="form-control"  id="consignatarionombre" name="consignatarionombre"  />
+			</div>	
+				
+			<input class="form-check-input" name="activo" type="hidden" th:value="true"checked required/>
+			<input class="form-check-input" name="clienteid" type="hidden" th:value="${consignatarioid}"checked required/>
+			<input class="form-check-input" name="cliente" id="cliente" type="hidden" th:value="${consignatarioid}"checked required/>
+			
+			
+			<button type="submit" class="btn btn-primary">Guardar</button>			
+		</form> 
+
+<script th:inline="javascript">
+$(document).ready(function() {
+	  $("#formCliente").submit(function(event) {
+	    event.preventDefault();
+	    if ($("#consignatarionombre").val() === "") {
+	      alert("El nombre del consignatario es requerido");
+	    } else {
+let nombre=$("#consignatarionombre").val();
+let cliente=$("#cliente").val();
+	      guardarCliente(nombre,cliente);
+	    }
+	  });
+	});
 
 
+function guardarCliente(nombre,cliente) {
+	  $.ajax({
+	    type: "POST",  
+	    url: "../consignatario/create",
+	    data: { consignatarionombre:nombre, cliente:},	 
+	    success: function(result) {
+	      console.log(result);
+	      alert("Consignatario guardado con éxito");
+	      window.location.reload();
+	    },
+	    error: function(e) {
+	      console.log("Error: ", e);
+	    }
+	  });
+	}
+</script>
+
+</div>
 
 
-
+		</div>
+	</div>
 
   
 

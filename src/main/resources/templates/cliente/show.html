@@ -97,15 +97,14 @@ $(document).ready(function() {
 	    if ($("#clientenombre").val() === "") {
 	      alert("El nombre es requerido");
 	    } else {
-	      guardarCliente();
+let nombre=$("#clientenombre").val();
+	      guardarCliente(nombre);
 	    }
 	  });
 	});
-</script>
 
-<script th:inline="javascript">
-var nombre=$("#clientenombre").val();
-function guardarCliente() {
+
+function guardarCliente(nombre) {
 	  $.ajax({
 	    type: "POST",  
 	    url: "../cliente/create",
@@ -113,6 +112,7 @@ function guardarCliente() {
 	    success: function(result) {
 	      console.log(result);
 	      alert("Cliente guardado con éxito");
+	      window.location.reload();
 	    },
 	    error: function(e) {
 	      console.log("Error: ", e);
