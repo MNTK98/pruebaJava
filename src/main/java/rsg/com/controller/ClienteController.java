@@ -2,19 +2,28 @@ package rsg.com.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 import rsg.com.domain.Cliente;
 import rsg.com.services.ClienteService;
+
 
 @Controller
 @RequestMapping("/cliente")
@@ -37,14 +46,37 @@ public class ClienteController {
 		return "cliente/show";
 	}
 	
-	@PostMapping ("/create")
-	public String create( Cliente cliente, Errors errores) {
-		if(errores.hasErrors()) {
-			return "cliente/show"+"?error";
-		}
-		clienteService.guardar(cliente);
-		return "redirect:/show"+"?success";
-	}
+//	@RequestMapping(value = "/cliente/create", method = RequestMethod.POST)
+//	@ResponseBody
+//	public String create(@RequestParam("clientenombre")String clientenombre, Errors errores) {
+//		if(errores.hasErrors()) {
+//			return "cliente"+"?error";
+//		}
+//		Cliente cliente=new Cliente();
+//		cliente.setClientenombre(clientenombre);
+//		cliente.setClienteactivo(true);
+//		cliente.setClientefechacreacion(new Date());
+//		cliente.setClientefechamodificacion(new Date());
+//		clienteService.guardar(cliente);
+//		return "redirect:/cliente"+"?success";
+//	}
+	
+	
+	 @PostMapping("/create")
+	    public String createCliente( @RequestParam("clientenombre")String clientenombre, Cliente cliente, Errors errores, Model model ){
+		 if(errores.hasErrors()){
+	            return "cliente";
+	        }
+		 cliente.setClientenombre(clientenombre);
+		 cliente.setClienteactivo(true);
+		 clienteService.guardar(cliente);
+	    	return "redirect:/cliente/";
+	    }
+	
+
+
+
+
 	
 	
 

@@ -74,7 +74,8 @@
 
 
 			<h3>Registrar nuevo cliente</h3>
-			<div> 
+			<div>
+			<form id="formCliente" th:action="@{/cliente/create}" th:object="${cliente}" method="post">  
 			<div class="col-md-5">
 				<br><label for="clientenombre"> <span>Nombre</span> <span
 					class="text-danger text-lg font-weight-bold">*</span>
@@ -82,15 +83,43 @@
 			</div>
 			
 			<div class="col-md-5">
-				<input type="text" name="clientenombre" id="clientenombre" class="form-control" required />
+				<input type="text" class="form-control"  id="clientenombre" name="clientenombre"  />
 			</div>
+			<input class="form-check-input" name="activo" type="hidden" th:value="true"checked required/>
+			<br>
+			 <button type="submit" class="btn btn-primary">Guardar</button>
+		</form> 
 
-			<br><label for="clienteactivo"> <span>Cliente activo</span> <span
-				class="text-danger text-lg font-weight-bold">*</span>
-			</label>
-			<div class="col-md-5">
-				<input type="checkbox" name="clienteactivo"  id="clienteactivo"class="form-control" required />
-			</div>
+<script th:inline="javascript">
+$(document).ready(function() {
+	  $("#formCliente").submit(function(event) {
+	    event.preventDefault();
+	    if ($("#clientenombre").val() === "") {
+	      alert("El nombre es requerido");
+	    } else {
+	      guardarCliente();
+	    }
+	  });
+	});
+</script>
+
+<script th:inline="javascript">
+var nombre=$("#clientenombre").val();
+function guardarCliente() {
+	  $.ajax({
+	    type: "POST",  
+	    url: "../cliente/create",
+	    data: { clientenombre:nombre},	 
+	    success: function(result) {
+	      console.log(result);
+	      alert("Cliente guardado con éxito");
+	    },
+	    error: function(e) {
+	      console.log("Error: ", e);
+	    }
+	  });
+	}
+</script>
 
 </div>
 
