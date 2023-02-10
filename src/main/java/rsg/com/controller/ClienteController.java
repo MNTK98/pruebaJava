@@ -1,8 +1,10 @@
 package rsg.com.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +24,13 @@ public class ClienteController {
 	
 	@GetMapping("/")
 	public String inicio (Model model) {
-		List <Cliente> cliente = clienteService.listarClientes();
+		Date clientefechamodificacion = null;
+		Date clientefechacreacion = null;
+		String clientenombre = null;
+		Long clienteid = null;
+		Boolean clienteactivo = null;
+		List <Cliente> cliente = clienteService.listOrder(clienteid, clientenombre,  clienteactivo, 
+				 clientefechacreacion,  clientefechamodificacion);
 		model.addAttribute("cliente",cliente);
 		return "cliente/show";
 	}

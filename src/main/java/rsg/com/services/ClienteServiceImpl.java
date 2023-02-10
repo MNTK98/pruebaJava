@@ -1,5 +1,6 @@
 package rsg.com.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,13 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public Cliente encontrarClientes(Cliente cliente) {
 		return clienteDao.findById(cliente.getClienteid()).orElse(null);
+	}
+
+	
+	@Override
+	public List<Cliente> listOrder(Long clienteid,String clientenombre, Boolean clienteactivo,
+			Date clientefechacreacion, Date clientefechamodificacion) {
+		return clienteDao.listOrder();
 	}
 
 }

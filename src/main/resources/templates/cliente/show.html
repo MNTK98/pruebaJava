@@ -2,112 +2,124 @@
 <html lang="en">
 <head>
 <th:block th:include="index :: head" />
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <script src="js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="js/datatables/jquery.dataTables.js" type="text/javascript"></script>
-<script src="js/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="js/datatables/dataTables.bootstrap.js"
+	type="text/javascript"></script>
 <script type="text/javascript">
-   $(function() {
-    $("#table1").dataTable({
-        "iDisplayLength": 5,
-        "aLengthMenu": [5]
-       });
-   });
-  </script>
+	$(function() {
+		$("#table1").dataTable({
+			"iDisplayLength" : 5,
+			"aLengthMenu" : [ 5 ]
+		});
+	});
+</script>
 
-  
-  <title>Cliente</title>
+
+<title>Cliente</title>
 </head>
 
 
 
 <body>
- <nav class="light-blue lighten-1" role="navigation"></nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center blue-text">Clientes</h1>
-      <br><br>
-    </div>
-  </div>
-  
-  
-    <div class="container">
-    <div class="section">
+	<nav class="light-blue lighten-1" role="navigation"></nav>
+	<div class="section no-pad-bot" id="index-banner">
+		<div class="container">
+			<br>
+			<br>
+			<h1 class="header center blue-text">Clientes</h1>
+			<br>
+			<br>
+		</div>
+	</div>
+
+
+	<div class="container">
+		<div class="section">
 
 
 
-      <div class="datatable-container" style="width: 100%">
-									<div class="car">
-										<div class="card-body">
-											<table id="table1" class="table table-bordered table-striped"
-												style="width: 100%">
-												<thead>
-													<tr>
-														<th>Id</th>
-														<th>Nombre</th>
-														<th>Fecha de registro</th>
-														<th>Fecha de modificacion</th>
-														<th>Activo</th>
-													</tr>
-												</thead>
-												<tbody>
-													 <tr th:each="cliente : ${cliente}">
-														
-														<td style="font-size: 13px;"
-															th:text="${cliente.clienteid}">Mostrar</td>
-															<td style="font-size: 13px;"
-															th:text="${cliente.clientenombre}">Mostrar</td>	
-															<td style="font-size: 13px;"
-															th:text="${cliente.clientefechacreacion}">Mostrar</td>	
-															<td style="font-size: 13px;"
-															th:text="${cliente.clientefechamodificacion}">Mostrar</td>	
-															<td style="font-size: 13px;"
-															th:text="${cliente.clienteactivo}">Mostrar</td>													
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										</div>
-									
-								</div>
+			<div class="datatable-container" style="width: 100%">
+				<div class="car">
+					<div class="card-body">
+						<table id="table1" class="table table-bordered table-striped"
+							style="width: 100%">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nombre</th>
+									<th>Fecha de registro</th>
+									<th>Fecha de modificacion</th>
+									<th>Activo</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="cliente : ${cliente}">
 
-    </div>
-    <br><br>
-<div>
- 
- <div align="right" class="col-md-5">
- <h3>Registrar nuevo cliente</h3>
-										 <br> <label for="clienteid"><span
-													class="text-danger text-lg font-weight-bold">*</span>
-												</label>
-											</div>
-											<div class="col-md-5">
-											<!-- 	<br> <input type="text" name="clienteid" th:field="${cliente.clienteid}"
-													class="form-control"
-													 required /> <span
-													th:if="${#fields.hasErrors('clienteid')}" th:errors="${cliente.clienteid}">Error
-													Cliente Id</span> -->
-											</div>
- 
+									<td style="font-size: 13px;" th:text="${cliente.clienteid}">Mostrar</td>
+									<td style="font-size: 13px;" th:text="${cliente.clientenombre}">Mostrar</td>
+									<td style="font-size: 13px;"
+										th:text="${cliente.clientefechacreacion}">Mostrar</td>
+									<td style="font-size: 13px;"
+										th:text="${cliente.clientefechamodificacion}">Mostrar</td>
+									<td style="font-size: 13px;" th:if="${cliente.clienteactivo==true}">Sí</td>
+									<td style="font-size: 13px;" th:if="${cliente.clienteactivo !=true}">No</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<br>
+		<br>
+		<div>
+
+
+			<h3>Registrar nuevo cliente</h3>
+			<div> 
+			<div class="col-md-5">
+				<br><label for="clientenombre"> <span>Nombre</span> <span
+					class="text-danger text-lg font-weight-bold">*</span>
+				</label>
+			</div>
+			
+			<div class="col-md-5">
+				<input type="text" name="clientenombre" id="clientenombre" class="form-control" required />
+			</div>
+
+			<br><label for="clienteactivo"> <span>Cliente activo</span> <span
+				class="text-danger text-lg font-weight-bold">*</span>
+			</label>
+			<div class="col-md-5">
+				<input type="checkbox" name="clienteactivo"  id="clienteactivo"class="form-control" required />
+			</div>
+
 </div>
-  </div>
-  
-  
-  
-  
-  <footer class="page-footer blue" style="position:fixed;bottom:0;left:0;width:100%;" >
-    <div class="container">
-      <div class="row">
-        <div class="col l12 s12">
-          <h6 class="white-text" style="text-align: center;">Prueba Java</h6>      
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-    </div>
-  </footer>
+
+
+		</div>
+	</div>
+
+
+
+
+	<footer class="page-footer blue"
+		style="position: fixed; bottom: 0; left: 0; width: 100%;">
+		<div class="container">
+			<div class="row">
+				<div class="col l12 s12">
+					<h6 class="white-text" style="text-align: center;">Prueba Java</h6>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright"></div>
+	</footer>
 </body>
 </html>
